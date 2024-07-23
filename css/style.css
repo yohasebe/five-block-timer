@@ -139,7 +139,7 @@ h1 img {
     top: 0;
     height: 100%;
     width: 2px;
-    background-color: red;
+    background-color: black;
 }
 
 .marker-label, #start-time-label, #end-time-label {

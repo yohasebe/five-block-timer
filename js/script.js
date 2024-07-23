@@ -14,10 +14,6 @@ function isSafari() {
 }
 
 if (isIOS() || (isMac() && isSafari() )) {
-    // Hide fullscreen button on iOS
-    if (isIOS()) {
-        document.getElementById('fullscreen-btn').style.display = 'none';
-    } 
     document.querySelectorAll('.time-input').forEach(input => {
         input.type = 'text';
         input.pattern = '^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$';
@@ -1088,6 +1084,10 @@ function toggleFullscreen() {
         } else if (mainContent.msRequestFullscreen) {
             mainContent.msRequestFullscreen();
         }
+        document.querySelector('#start-btn').classList.add('fullscreen-btn');
+        document.querySelector('#stop-btn').classList.add('fullscreen-btn');
+        document.querySelector('#reset-btn').classList.add('fullscreen-btn');
+        document.querySelector('#resume-btn').classList.add('fullscreen-btn');
     } else {
         if (document.exitFullscreen) {
             document.exitFullscreen();
@@ -1098,6 +1098,10 @@ function toggleFullscreen() {
         } else if (document.msExitFullscreen) {
             document.msExitFullscreen();
         }
+        document.querySelector('#start-btn').classList.remove('fullscreen-btn');
+        document.querySelector('#stop-btn').classList.remove('fullscreen-btn');
+        document.querySelector('#reset-btn').classList.remove('fullscreen-btn');
+        document.querySelector('#resume-btn').classList.remove('fullscreen-btn');
     }
     return !isFullscreen;
 }

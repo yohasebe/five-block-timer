@@ -1,0 +1,737 @@
+/* Base styles for html and body */
+body {
+    height: 100%;
+    margin: 20px auto 20px;
+    font-family: 'Roboto', sans-serif;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #d6d8d9;
+    transition: background-color 0.5s;
+    overflow-y: auto;
+}
+
+#keyboard-shortcuts {
+    display: none;
+}
+
+/* Header styles */
+#header {
+    width: 100%;
+    background-color: #d6d8d9;
+    z-index: 1000;
+    padding-left: 10px;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: calc(0.8em + 1vw);
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+h1 img {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+/* Main content wrapper */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Timer container styles */
+#timer-container {
+    padding-top: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.5s;
+    width: calc(100% - 40px);
+    max-width: 450px;
+    min-height: 180px;
+    height: auto;
+}
+
+#timer-background {
+    position: absolute;
+    top: -13px;
+    left: -13px;
+    right: -13px;
+    bottom: -13px;
+    background-color: white;
+    border-radius: 22px;
+    z-index: -1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Timer and sub-timer styles */
+#section-label, #timer, #sub-timer {
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    text-shadow: 2px 2px 2px white, -2px -2px 2px white, 2px -2px 2px white, -2px 2px 2px white;
+}
+
+#section-label {
+    font-size: calc(0.9em + 1vw);
+    margin-bottom: 5px;
+}
+
+#timer {
+    font-size: calc(1.5em + 1vw); /* Adjusted font size for better responsiveness */
+    margin: 5px 0;
+}
+#timer-container.hide-sub-timer #timer {
+    font-size: calc(2.5em + 3vw);
+}
+
+#sub-timer {
+    font-size: calc(0.9em + 0.5vw);
+    margin-top: 5px;
+}
+
+#progress-bar-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    border-radius: 10px;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #eee;
+    position: relative;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.progress-section {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    transition: width 0.1s linear;
+}
+
+/* Marker styles */
+.marker {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: red;
+}
+
+.marker-label, #start-time-label, #end-time-label {
+    position: absolute;
+    font-size: calc(0.7em + 0.3vw);
+    white-space: nowrap;
+    transform: translateX(-50%);
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.marker-label-top, .start-end-label-top {
+    bottom: 100%;
+    padding-bottom: 10px;
+}
+
+.marker-label-bottom, .start-end-label-bottom {
+    top: 100%;
+    padding-top: 10px;
+}
+
+#start-time-label {
+    left: 0;
+    transform: translateX(0);
+}
+
+#end-time-label {
+    right: 0;
+    transform: translateX(0);
+}
+
+#left-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: red;
+}
+
+.settings-message {
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+/* Settings styles */
+#settings {
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: calc(100% - 20px);
+    max-width: 1200px;
+}
+
+.settings-group-wrapper {
+    display: flex; /* Align child elements horizontally */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Align child elements in a single line */
+    gap: 20px; /* Space between child elements */
+    width: 100%; /* Set width to 100% */
+}
+
+/* Scrollbar styles */
+.settings-group-wrapper::-webkit-scrollbar {
+    height: 8px; /* Scrollbar height */
+}
+
+.settings-group-wrapper::-webkit-scrollbar-track {
+    background: #d6d8d9; /* Background color of the scrollbar track */
+}
+
+.settings-group-wrapper::-webkit-scrollbar-thumb {
+    background: #a0a0a0; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Round the corners of the thumb */
+}
+
+.settings-group-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #888; /* Color of the thumb on hover */
+}
+
+.main-settings-group, .sub-settings-group {
+    display: flex; /* Align child elements horizontally */
+    flex-wrap: nowrap; /* Align child elements in a single line */
+    justify-content: flex-start; /* Align to the left */
+    gap: 4px; /* Space between child elements */
+    background-color: #f0f0f0; /* Background color */
+    border-radius: 22px; /* Round the corners */
+    padding: 8px; /* Inner padding */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Add shadow */
+}
+
+.setting-group {
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px; /* Fixed width */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+input[type="text"], input[type="color"] {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0 10px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+input[type="color"] {
+    height: 30px;
+}
+
+input[type="time"] {
+    padding: 6px;
+    padding-right: 30px;
+    text-align: right;
+    margin: 5px 0 10px;
+}
+
+input:disabled, button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Add space below the time input container */
+.setting-group > * {
+    margin-bottom: 10px;
+}
+
+/* Remove margin from the last child to maintain consistent spacing */
+.setting-group > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Button container styles */
+#button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Button styles */
+#start-btn, #stop-btn, #reset-btn, #resume-btn, #toggle-sub-timer-btn, #swap-timer-btn, #fullscreen-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: calc(0.9em + 0.2vw);
+    padding: 10px 20px;
+    height: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#start-btn, #stop-btn {
+    width: calc(33% - 7px);
+
+}
+
+#reset-btn, #resume-btn {
+    width: calc(33.33% - 7px);
+}
+
+#toggle-sub-timer-btn, #swap-timer-btn, #fullscreen-btn {
+    width: auto;
+    padding: 10px;
+}
+
+/* Prominent marker styles */
+.marker.prominent, .marker.prominent-end {
+    width: 4px;
+    background-color: #ff4500;
+    z-index: 2;
+}
+
+.marker.prominent::before, .marker.prominent-end::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff4500;
+    border-radius: 22px; 
+    left: -3px;
+}
+
+.marker.prominent::before {
+    top: -5px;
+}
+
+.marker.prominent-end::after {
+    bottom: -5px;
+}
+
+#footer-message {
+    position: relative;
+    left: auto;
+    transform: none;
+    padding: 10px;
+    text-align: center;
+    z-index: 1000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #666;
+}
+
+@media (min-height: 800px) {
+    #footer-message {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0;
+    }
+}
+
+#footer-message a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#footer-message a:hover {
+    text-decoration: underline;
+}
+
+/* Media query for larger screens */
+@media (min-width: 992px) {
+    header {
+        text-align: left;
+    }
+
+    h1 {
+        justify-content: flex-start;
+    }
+
+    .main-content {
+        margin-top: 30px;
+    }
+
+    #timer-container {
+        padding: 20px;
+        min-height: 180px;
+    }
+
+    .marker-label-top, .start-end-label-top {
+        padding-bottom: 15px;
+    }
+
+    .marker-label-bottom, .start-end-label-bottom {
+        padding-top: 15px;
+    }
+
+    .settings-group-wrapper {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 1200px) {
+    header {
+        padding-left: 0;
+    }
+
+    .marker-label-top, .start-end-label-top {
+        padding-bottom: 10px;
+    }
+
+    .marker-label-bottom, .start-end-label-bottom {
+        padding-top: 10px;
+    }
+
+    #timer {
+        font-size: calc(1.2em + 1vw); /* Adjust font size for this range */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px 0;
+    }
+
+    .main-content {
+        padding: 0;
+    }
+
+    #timer-container {
+        width: calc(100% - 40px);
+        padding: 15px;
+        min-height: 180px;
+    }
+
+    #section-label {
+        font-size: calc(0.9em + 1vw);
+        margin-bottom: 5px;
+    }
+
+    #timer {
+        font-size: calc(1.2em + 1vw); /* Smaller font size for narrow screens */
+    }
+
+    #sub-timer {
+        font-size: calc(0.9em + 0.5vw);
+        margin-top: 5px;
+    }
+
+    #progress-bar {
+        margin: 30px 0;
+    }
+
+    #progress-bar-container {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    input[type="text"], input[type="color"] {
+        width: 100%;
+    }
+
+    .time-input {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .time-input-container {
+        width: 100%;
+    }
+
+    #start-btn, #stop-btn, #reset-btn, #resume-btn, #toggle-sub-timer-btn, #swap-timer-btn, #fullscreen-btn {
+        font-size: calc(0.8em + 0.2vw);
+        /* padding: 8px 16px; */
+        height: 40px;
+    }
+
+    #start-btn, #stop-btn {
+        width: calc(33% - 7px);
+    }
+
+    #reset-btn, #resume-btn {
+        width: calc(50% - 5px);
+    }
+
+    #button-container {
+        width: calc(100% - 20px);
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+/* New media query for larger screens */
+@media (min-width: 1400px) {
+    body {
+        justify-content: center;
+    }
+
+    .main-content {
+        margin-bottom: 20px;
+    }
+
+    #settings {
+        margin-top: 20px;
+    }
+
+    #keyboard-shortcuts {
+        display: inline-block;
+    }
+}
+
+#svg-timer-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#svg-timer-container.large-timer text {
+    font-size: 80px;
+}
+
+.fullscreen-mode .main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #d6d8d9;
+}
+
+.fullscreen-mode #timer-container {
+    width: 80vw;
+    height: 60vh;
+    max-width: none;
+}
+
+.fullscreen-mode #progress-bar-container {
+    width: 80vw;
+    max-width: none;
+}
+
+.fullscreen-mode #button-container {
+    max-width: 80vw;
+}
+
+.fullscreen-mode #settings,
+.fullscreen-mode #github-link {
+    display: none;
+}
+
+.fullscreen-mode #svg-timer-container svg text {
+    font-size: 8vh;
+}
+
+.fullscreen-mode #svg-timer-container svg text.main-timer {
+    font-size: 16vh;
+}
+
+.fullscreen-mode #svg-timer-container.large-timer svg text.main-timer {
+    font-size: 20vh;
+}
+
+.bell-icon {
+    cursor: pointer;
+    color: #007bff;
+}
+
+.not-selectable {
+    user-select: none;
+}
+
+.setting-group {
+    padding: 15px;  /* Increase padding */
+}
+
+.time-input-container {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    height: 38px;
+    margin-bottom: 15px;  /* Increase bottom margin */
+}
+
+.time-input {
+    width: 100%;
+    height: 38px;  /* Explicitly set height */
+    padding: 0 30px;
+    text-align: right;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.time-input-button {
+    position: absolute;
+    top: 5px;
+    width: 30px;
+    height: 38px;  /* Explicitly set height */
+    padding: 0;
+    font-size: 14px;
+    line-height: 38px;  /* Match height for vertical centering */
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.time-input-button[data-action="decrement"] {
+    left: 0;
+    border-right: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.time-input-button[data-action="increment"] {
+    right: 0;
+    border-left: none;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.sound-setting-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.sound-setting-wrapper .form-check-input {
+    margin-right: 10px;
+}
+
+.sound-setting-wrapper .form-check-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sound-setting-wrapper .bell-icon {
+    margin-right: 5px;
+}
+
+.sound-setting-wrapper #bell-count-countdown {
+    margin-left: 5px;
+}
+
+#svg-timer-container svg {
+    width: 100%;
+    height: 100%;
+}
+
+#svg-timer-container svg text {
+    font-family: 'Roboto Mono', monospace;
+}
+
+#svg-timer-container.narrow-screen.large-timer svg .main-timer {
+    font-size: 12vw;
+}
+
+@media (max-width: 768px) {
+    #svg-timer-container.narrow-screen.large-timer svg .main-timer {
+        font-size: 12vw;
+    }
+}
+
+#footer-message kbd {
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 0 0 2px #fff inset;
+    color: #333;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin: 0 0.1em;
+    padding: 0.1em 0.6em;
+    text-shadow: 0 1px 0 #fff;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px 20px 0;
+}
+
+.main-content {
+    flex: 1;
+}
+
+#settings {
+    flex: 2;
+    margin-bottom: 20px;
+}
+
+#padding {
+    flex: 3;
+}
+
+.footer-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+#footer-message {
+    padding-top: 0px;
+    padding-bottom: 20px;
+    text-align: center;
+    line-height: 2;
+}
+
+@media (min-height: 800px) {
+    .footer-wrapper {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}

@@ -1,0 +1,195 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+
+        <title>Five Block Timer</title>
+        <link rel="icon" href="assets/img/timer.svg">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;700&family=Roboto+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <link rel="stylesheet" href="css/style.css?v=0.1.5">
+    </head>
+    <body>
+        <div id="header">
+            <h1><img src="assets/img/timer.svg" alt="Timer Icon">Five Block Timer</h1>
+        </div>
+
+        <div class="main-content">
+            <div id="timer-container">
+                <div id="timer-background"></div>
+                <div id="svg-timer-container"></div>
+            </div>
+
+            <div id="progress-bar-container">
+                <div id="progress-bar">
+                    <div id="left-bar"></div>
+                    <div id="start-time-label"></div>
+                    <div id="end-time-label"></div>
+                </div>
+            </div>
+            <div id="button-container">
+                <button id="start-btn" class="btn btn-primary"><i class="fas fa-play"></i> Start</button>
+                <button id="stop-btn" class="btn btn-danger" style="display: none;"><i class="fas fa-stop"></i> Stop</button>
+                <button id="resume-btn" class="btn btn-warning" style="display: none;"><i class="fas fa-play"></i> Resume</button>
+                <button id="reset-btn" class="btn btn-secondary" style="display: none;"><i class="fas fa-undo"></i> Reset</button>
+                <button id="swap-timer-btn" class="btn btn-secondary">
+                    <i class="fa-solid fa-exchange-alt fa-rotate-90"></i>
+                </button>
+                <button id="toggle-sub-timer-btn" class="btn btn-secondary">
+                    <i class="fas fa-eye"></i>
+                </button>
+                <button id="fullscreen-btn" class="btn btn-secondary">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+        </div>
+        <div id="settings">
+            <div class="settings-group-wrapper">
+                <div class="sub-settings-group">
+                    <div class="setting-group">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input enable-setting" type="checkbox" id="enable-countdown" checked>
+                            <label class="form-check-label" for="enable-countdown">
+                                <span class="toggle-label">Enabled</span>
+                            </label>
+                        </div>
+                        
+                        <input type="text" id="countdown-label" class="form-control" value="&#x23f1; Countdown" tabindex="-1">
+                        <div class="time-input-container">
+                            <button class="time-input-button" data-action="decrement"><i class="fas fa-minus"></i></button>
+                            <input type="time" id="countdown" class="form-control time-input" value="00:00:05" tabindex="-1">
+                            <button class="time-input-button" data-action="increment"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="form-check form-switch sound-setting-wrapper">
+                            <input class="form-check-input sound-setting" type="checkbox" id="sound-countdown" checked>
+                            <label class="form-check-label not-selectable">
+                                <i class="fa-solid fa-bell-concierge bell-icon" data-sound="countdown"></i>
+                                &nbsp;×&nbsp;
+                                <span id="bell-count-countdown">1</span>
+                            </label>
+                        </div>
+                        <input type="color" id="countdown-color" class="form-control" value="#d6d8d9" tabindex="-1">
+                    </div>
+                </div>
+
+                <div class="main-settings-group">
+                    <div class="setting-group">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input enable-setting" type="checkbox" id="enable-section-a" checked>
+                            <label class="form-check-label" for="enable-section-a">
+                                <span class="toggle-label">Enabled</span>
+                            </label>
+                        </div>
+                        <input type="text" id="section-a-label" class="form-control" value="Section A" tabindex="-1">
+                        <div class="time-input-container">
+                            <input type="time" id="section-a" class="form-control time-input" value="00:00:10" tabindex="-1">
+                            <div class="time-input-buttons">
+                                <button class="time-input-button" data-action="increment"><i class="fas fa-plus"></i></button>
+                                <button class="time-input-button" data-action="decrement"><i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch sound-setting-wrapper">
+                            <input class="form-check-input sound-setting" type="checkbox" id="sound-section-a" checked>
+                            <label class="form-check-label not-selectable">
+                                <i class="fa-solid fa-bell-concierge bell-icon" data-sound="section-a"></i>
+                                &nbsp;×&nbsp;
+                                <span id="bell-count-section-a">1</span>
+                            </label>
+                        </div>
+                        <input type="color" id="section-a-color" class="form-control" value="#ffd966" tabindex="-1">
+                    </div>
+                    <div class="setting-group">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input enable-setting" type="checkbox" id="enable-section-b" checked>
+                            <label class="form-check-label" for="enable-section-b">
+                                <span class="toggle-label">Enabled</span>
+                            </label>
+                        </div>
+                        <input type="text" id="section-b-label" class="form-control" value="Section B" tabindex="-1">
+                        <div class="time-input-container">
+                            <input type="time" id="section-b" class="form-control time-input" value="00:00:10" tabindex="-1">
+                            <div class="time-input-buttons">
+                                <button class="time-input-button" data-action="increment"><i class="fas fa-plus"></i></button>
+                                <button class="time-input-button" data-action="decrement"><i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch sound-setting-wrapper">
+                            <input class="form-check-input sound-setting" type="checkbox" id="sound-section-b" checked>
+                            <label class="form-check-label not-selectable">
+                                <i class="fa-solid fa-bell-concierge bell-icon" data-sound="section-b"></i>
+                                &nbsp;×&nbsp;
+                                <span id="bell-count-section-b">1</span>
+                            </label>
+                        </div>
+                        <input type="color" id="section-b-color" class="form-control" value="#d4edda" tabindex="-1">
+                    </div>
+                    <div class="setting-group">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input enable-setting" type="checkbox" id="enable-section-c" checked>
+                            <label class="form-check-label" for="enable-section-c">
+                                <span class="toggle-label">Enabled</span>
+                            </label>
+                        </div>
+                        <input type="text" id="section-c-label" class="form-control" value="Section C" tabindex="-1">
+                        <div class="time-input-container">
+                            <input type="time" id="section-c" class="form-control time-input" value="00:00:10" tabindex="-1">
+                            <div class="time-input-buttons">
+                                <button class="time-input-button" data-action="increment"><i class="fas fa-plus"></i></button>
+                                <button class="time-input-button" data-action="decrement"><i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch sound-setting-wrapper">
+                            <input class="form-check-input sound-setting" type="checkbox" id="sound-section-c" checked>
+                            <label class="form-check-label not-selectable">
+                                <i class="fa-solid fa-bell-concierge bell-icon" data-sound="section-c"></i>
+                                &nbsp;×&nbsp;
+                                <span id="bell-count-section-c">1</span>
+                            </label>
+                        </div>
+                        <input type="color" id="section-c-color" class="form-control" value="#c3e6cb" tabindex="-1">
+                    </div>
+                    <div class="setting-group">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input enable-setting" type="checkbox" id="enable-section-d" checked>
+                            <label class="form-check-label" for="enable-section-d">
+                                <span class="toggle-label">Enabled</span>
+                            </label>
+                        </div>
+                        <input type="text" id="section-d-label" class="form-control" value="&#x231b; Ending" tabindex="-1">
+                        <div class="time-input-container">
+                            <input type="time" id="section-d" class="form-control time-input" value="00:00:05" tabindex="-1">
+                            <div class="time-input-buttons">
+                                <button class="time-input-button" data-action="increment"><i class="fas fa-plus"></i></button>
+                                <button class="time-input-button" data-action="decrement"><i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch sound-setting-wrapper">
+                            <input class="form-check-input sound-setting" type="checkbox" id="sound-section-d" checked>
+                            <label class="form-check-label not-selectable">
+                                <i class="fa-solid fa-bell-concierge bell-icon" data-sound="section-d"></i>
+                                &nbsp;×&nbsp;
+                                <span id="bell-count-section-d">2</span>
+                            </label>
+                        </div>
+                        <input type="color" id="section-d-color" class="form-control" value="#f8d7da" tabindex="-1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="padding"></div>
+
+        <div class="footer-wrapper">
+            <div id="footer-message">
+                <span id="keyboard-shortcuts"> <kbd>Space</kbd> to start/stop/resume &nbsp;|&nbsp;&nbsp;<kbd>Enter</kbd> to toggle fullscreen&nbsp;&nbsp;| &nbsp; </span>
+                <span>Five Block Timer v0.1.5&nbsp;&nbsp;| &nbsp;Created by Yoichiro HASEBE&nbsp;&nbsp;| &nbsp;<a href="https://github.com/yohasebe/five-block-timer" target="_blank">README</a></span>
+            </div>
+        </div>
+
+        <script src="js/script.js?v=0.1.5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

@@ -13,7 +13,8 @@ function isSafari() {
     return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 }
 
-if (isIOS() || (isMac() && isSafari() )) {
+// if (isIOS() || (isMac() && isSafari() )) {
+if (isIOS()) {
     document.querySelectorAll('.time-input').forEach(input => {
         input.type = 'text';
         input.pattern = '^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$';

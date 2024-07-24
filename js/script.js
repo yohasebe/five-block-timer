@@ -1031,9 +1031,13 @@ document.querySelectorAll('.enable-setting').forEach(toggle => {
 // Validate time input
 function validateTimeInput(input) {
     const timePattern = /^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$/;
-    // if (!isIOS() && !timePattern.test(input.value)) {
-    //     input.value = "00:00:00";
-    // }
+    if (timePattern.test(input.value)) {
+        input.style.color = 'black
+    } else {
+        // input.value = "00:00:00";
+        // change color of the element to red
+        input.style.color = 'red';:
+    }
     return timePattern.test(input.value);
 }
 

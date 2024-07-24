@@ -1032,11 +1032,11 @@ document.querySelectorAll('.enable-setting').forEach(toggle => {
 function validateTimeInput(input) {
     const timePattern = /^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$/;
     if (timePattern.test(input.value)) {
-        input.style.color = 'black
+        input.style.backgroundColor = "white";
     } else {
         // input.value = "00:00:00";
-        // change color of the element to red
-        input.style.color = 'red';:
+        // change background color of the element to #f9dbd9
+        input.style.backgroundColor = "#f9dbd9";
     }
     return timePattern.test(input.value);
 }

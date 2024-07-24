@@ -251,7 +251,6 @@ input[type="text"], input[type="color"] {
     width: 100%;
     padding: 5px;
     margin: 5px 0 10px;
-    text-align: center;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -262,8 +261,9 @@ input[type="color"] {
 input[type="time"] {
     padding: 6px;
     padding-right: 30px;
-    text-align: right;
+    text-align: center;
     margin: 5px 0 10px;
+    font-weight: bold;
 }
 
 input:disabled, button:disabled {
@@ -752,4 +752,5 @@ body {
 }
 
 input[type=time]::-webkit-datetime-edit-ampm-field { background:none; display: none; }
+input[type=time]::-webkit-datetime-edit-meridiem-field { background:none; display: none; }
 input[type="time"]::-webkit-calendar-picker-indicator { background: none; display:none; }

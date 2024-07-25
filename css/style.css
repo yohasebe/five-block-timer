@@ -1,6 +1,5 @@
 /* Base styles for html and body */
 body {
-    height: 100%;
     margin: 20px auto 20px;
     font-family: 'Roboto', sans-serif;
     flex-direction: column;
@@ -355,15 +354,6 @@ input:disabled, button:disabled {
     font-size: 0.9em;
     line-height: 1.4;
     color: #666;
-}
-
-@media (min-height: 800px) {
-    #footer-message {
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-top: 0;
-    }
 }
 
 #footer-message a {
@@ -735,15 +725,6 @@ body {
     line-height: 2;
 }
 
-@media (min-height: 800px) {
-    .footer-wrapper {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-    }
-}
-
 #start-btn.fullscreen-btn,
 #stop-btn.fullscreen-btn,
 #resume-btn.fullscreen-btn,
@@ -755,3 +736,12 @@ body {
 input[type=time]::-webkit-datetime-edit-ampm-field { background:none; display: none; }
 input[type=time]::-webkit-datetime-edit-meridiem-field { background:none; display: none; }
 input[type="time"]::-webkit-calendar-picker-indicator { background: none; display:none; }
+
+@media (min-height: 800px) {
+    #footer-message {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0;
+    }
+}

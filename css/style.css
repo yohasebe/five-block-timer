@@ -549,7 +549,7 @@ input:disabled, button:disabled {
 }
 
 .fullscreen-mode #svg-timer-container svg text {
-    font-size: 8vh;
+    font-size: 10vh;
 }
 
 .fullscreen-mode #svg-timer-container svg text.main-timer {
@@ -745,3 +745,4 @@ input[type="time"]::-webkit-calendar-picker-indicator { background: none; displa
         margin-top: 0;
     }
 }
+

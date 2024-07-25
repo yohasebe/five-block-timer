@@ -935,7 +935,7 @@ document.querySelectorAll('.enable-setting').forEach(toggle => {
 
 window.addEventListener('resize', adjustMarkerLabels);
 
-function createSVGText(text, x, y, fontSize, fontWeight = '700', strokeWidth = 2, className = '') {
+function createSVGText(text, x, y, fontSize, fontWeight = '700', strokeWidth = 4, className = '') {
     // if text only contains numbers, symbols, and spaces use "Roboto Mono" font
     const fontFamily = /^[0-9\s\W]*$/.test(text) ? 'Roboto Mono' : 'Montserrat';
     const id = `outline-${Math.random().toString(36).substr(2, 9)}`;
@@ -959,8 +959,10 @@ function createSVGText(text, x, y, fontSize, fontWeight = '700', strokeWidth = 2
 
 function updateSVGTimer(mainText, subText, sectionLabelText, isFullscreenMode) {
     const svgContainer = document.getElementById('svg-timer-container');
-    const containerWidth = svgContainer.clientWidth;
-    const containerHeight = svgContainer.clientHeight;
+
+    // change containerWidth and containerHeight to fixed values when in fullscreen mode
+    const containerWidth = isFullscreenMode ? 1920 : svgContainer.clientWidth;
+    const containerHeight = isFullscreenMode ? 1080 : svgContainer.clientHeight;
 
     const isNarrowScreen = window.innerWidth <= 768;
     const shouldAdjustSize = isNarrowScreen && !showSubTimer;
@@ -969,17 +971,21 @@ function updateSVGTimer(mainText, subText, sectionLabelText, isFullscreenMode) {
     const subFontSize = isFullscreenMode ? '8vh' : '24px';
     const sectionLabelFontSize = isFullscreenMode ? '8vh' : '24px';
 
-    let sectionLabelSVG = showSubTimer ? createSVGText(sectionLabelText, containerWidth / 2, containerHeight * 0.2, sectionLabelFontSize, '700', 2, 'section-label') : '';
+    const strokeWidth = isFullscreenMode ? 5 : 2;
+    
+    let sectionLabelSVG = showSubTimer ? createSVGText(sectionLabelText, containerWidth / 2, containerHeight * 0.2, sectionLabelFontSize, '700', strokeWidth, 'section-label') : '';
+
     let mainTimerSVG = createSVGText(
         isSwapped ? subText : mainText, 
         containerWidth / 2, 
         containerHeight / 2 + 5,
         mainFontSize,
         '700',
-        2,
+        strokeWidth,
         'main-timer'
     );
-    let subTimerSVG = showSubTimer ? createSVGText(isSwapped ? mainText : subText, containerWidth / 2, containerHeight * 0.8, subFontSize, '700', 2, 'sub-timer') : '';
+
+    let subTimerSVG = showSubTimer ? createSVGText(isSwapped ? mainText : subText, containerWidth / 2, containerHeight * 0.8, subFontSize, '700', strokeWidth, 'sub-timer') : '';
 
     svgContainer.innerHTML = `
         <svg width="100%" height="100%" viewBox="0 0 ${containerWidth} ${containerHeight}">

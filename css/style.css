@@ -194,6 +194,7 @@ h1 img {
     gap: 20px;
     width: calc(100% - 20px);
     max-width: 1200px;
+    max-height: 270px;
 }
 
 .settings-group-wrapper {
@@ -250,6 +251,7 @@ input[type="text"], input[type="color"] {
     width: 100%;
     padding: 5px;
     margin: 5px 0 10px;
+    text-align: center;
     font-family: 'Roboto', sans-serif;
 }
 

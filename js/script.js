@@ -13,13 +13,11 @@ function isSafari() {
     return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 }
 
-if (isIOS() || !isMac() || isSafari()) {
-    document.querySelectorAll('.time-input').forEach(input => {
-        input.type = 'text';
-        // input.pattern = '^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$';
-        input.placeholder = 'HH:MM:SS';
-    });
-}
+document.querySelectorAll('.time-input').forEach(input => {
+    input.type = 'text';
+    // input.pattern = '^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$';
+    input.placeholder = 'HH:MM:SS';
+});
 
 let isFullscreen = false;
 
@@ -1030,12 +1028,15 @@ document.querySelectorAll('.enable-setting').forEach(toggle => {
 
 // Validate time input
 function validateTimeInput(input) {
-    const timePattern = /^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$/;
-    if (timePattern.test(input.value)) {
+    let converted = input.value.replace(/[０-９]/g, function(s) {
+        return String.fromCharCode(s.charCodeAt(0) - 65248);
+    }).replace(/[：\.]/g, ':');
+    input.value = converted;
+
+    const timePattern = /^([0-9０-９]?[0-9０-９])[:：\.]([0-9０-９]?[0-9０-９])[:：\.]([0-9０-９]?[0-9０-９])$/;
+    if (timePattern.test(converted)) {
         input.style.backgroundColor = "white";
     } else {
-        // input.value = "00:00:00";
-        // change background color of the element to #f9dbd9
         input.style.backgroundColor = "#f9dbd9";
     }
     return timePattern.test(input.value);

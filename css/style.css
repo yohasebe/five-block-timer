@@ -748,3 +748,8 @@ input[type="time"]::-webkit-calendar-picker-indicator { background: none; displa
     }
 }
 
+#countdown-label {
+    background-color: #f0f0f0;
+    border: 0;
+}
+

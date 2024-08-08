@@ -437,6 +437,7 @@ function startCountdown(duration, isBeforeCountdown) {
 // Start timing
 function startTiming() {
     initAudio();
+    // Remove the playSound('start') from here
 
     clearInterval(timerInterval);
     clearInterval(countdownInterval);
@@ -881,6 +882,7 @@ document.addEventListener('keydown', (event) => {
         event.preventDefault();
         switch (timerState) {
             case 'idle':
+                playSound('start');  // Add this line
                 startTiming();
                 break;
             case 'running':
